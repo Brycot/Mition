@@ -1,0 +1,19 @@
+{
+  "name": "mition",
+  "version": "1.0.0",
+  "description": "A page of information for movies",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brycot/Mition.git"
+  },
+  "author": "Braico",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Brycot/Mition/issues"
+  },
+  "homepage": "https://github.com/Brycot/Mition#readme"
+}
