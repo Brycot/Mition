@@ -102,6 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# Privates.js (API KEY)
-src/private.js
