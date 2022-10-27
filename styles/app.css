@@ -266,7 +266,9 @@ footer {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-
+.header-searchForm-img {
+    width: 20px;
+}
 /* Trending */
 .trendingPreview-header,
 .liked-header {
