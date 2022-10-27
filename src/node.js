@@ -15,6 +15,7 @@ const movieDetailCategoriesList = document.querySelector('#movieDetail .categori
 const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
 const castMoviesContainer = document.querySelector('.castMovies-scrollContainer');
 const likedMovieListArticle = document.querySelector('.liked-movieList');
+const trailerMoviesContainer = document.querySelector('.trailer-container');
 
 // Elements
 const headerTitle = document.querySelector('.header-title');

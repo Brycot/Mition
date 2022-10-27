@@ -95,7 +95,9 @@ button {
     font-size: 14px;
     cursor: pointer;
 }
-
+.title-image {
+    width: 170px;
+}
 /* Shared */
 .header-container,
 .trendingPreview-header,
@@ -123,6 +125,30 @@ footer {
     min-width: 150px;
     max-width: 170px;
     height: 250px;
+}
+.trailer-container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 190px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.trailer-container--loading {
+    background: var(--purple-light-2);
+    border-radius: 8px;
+    width: 350px;
+    height: 190px;
+    margin-bottom: 15px;
+    animation: loading-skeleton infinite 1.5s;
+}
+@media (min-width: 900px) {
+    .trailer-container,
+    .trailer-container--loading {
+        width: 560px;
+        height: 315px;
+    }
 }
 .movie-container--loading {
     background: var(--purple-light-2);
@@ -467,6 +493,14 @@ footer {
 .movieDetail-description {
     margin: 0 0 24px 0;
     color: var(--text-color);
+}
+.TrailerMovies-container {
+    margin-top: 24px;
+    width: 100%;
+    min-height: 200px;
+}
+.TrailerMovies-title {
+    margin-bottom: 16px;
 }
 
 .castMovies-container {

@@ -145,6 +145,22 @@ function getCast(
         container.appendChild(movieContainer);
     });
 }
+function getTrailer(trailer, container, { clean = false } = {}) {
+    if (clean) {
+        container.innerHTML = "";
+    }
+
+    const trailerContainer = document.createElement("div");
+    trailerContainer.classList.add("trailer");
+    let trailerLink = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    const { clientWidth } = document.documentElement;
+    const MIN_DESKTOP_WIDTH = 600;
+    if (clientWidth < MIN_DESKTOP_WIDTH) {
+        trailerLink = `<iframe width="330" height="190" src="https://www.youtube.com/embed/${trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    }
+    trailerContainer.innerHTML = trailerLink;
+    container.appendChild(trailerContainer);
+}
 
 function createCategories(categories, container) {
     container.innerHTML = "";
@@ -329,11 +345,11 @@ async function getCastMovieId(id) {
 }
 async function getTrailerMovieId(id) {
     const { data } = await api(`/movie/${id}/videos`);
-    const castMovie = data.results;
-    // getCast(castMovie, castMoviesContainer, {
-    //     lazyLoad: true,
-    //     clean: true,
-    // });
+    const trailers = data.results;
+    const trailerMovie = trailers.pop();
+    getTrailer(trailerMovie.key, trailerMoviesContainer, {
+        clean: true,
+    });
 }
 async function getImageMovieId(id) {
     const { data } = await api(`/movie/${id}/images`);

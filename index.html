@@ -12,20 +12,33 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="./styles/app.css" />
+        <link
+            rel="shortcut icon"
+            href="./src/assets/MItionFavicon.png"
+            type="image/x-icon"
+        />
 
         <title>Mitio</title>
     </head>
     <body>
         <header id="header" class="header-container">
             <span class="header-arrow inactive">&lt;</span>
-            <h1 class="header-title">MItio</h1>
+            <h1 class="header-title">
+                <img class="title-image" src="./src/assets/logoMitio.png" alt="" />
+            </h1>
             <h1 class="header-title header-title--categoryView inactive">
                 Action
             </h1>
 
             <form id="searchForm" class="header-searchForm">
                 <input type="text" placeholder="The Avengers" />
-                <button id="searchBtn"><img class="header-searchForm-img" src="./src/assets/searchIcon.png" alt=""></button>
+                <button id="searchBtn">
+                    <img
+                        class="header-searchForm-img"
+                        src="./src/assets/searchIcon.png"
+                        alt=""
+                    />
+                </button>
             </form>
         </header>
 
@@ -116,6 +129,12 @@
                 <!-- <div class="category-container">
             <h3 id="id28" class="category-title">Romance</h3>
         </div> -->
+            </article>
+            <article class="TrailerMovies-container">
+                <h2 class="TrailerMovies-title">Trailer</h2>
+                    <div class="trailer-container">
+                        <div class="trailer-container--loading"></div>
+                    </div>
             </article>
             <article class="castMovies-container">
                 <h2 class="castMovies-title">Cast Movie</h2>
