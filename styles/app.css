@@ -86,7 +86,9 @@ input::placeholder {
     color: var(--purple-medium-1);
     font-family: var(--font-family-text);
 }
-
+iframe {
+    border-radius: 20px;
+}
 button {
     background-color: var(--main-color);
     border: none;
