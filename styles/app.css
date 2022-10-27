@@ -39,6 +39,7 @@ body {
     font-weight: var(--font-weight-text1);
     font-size: 16px;
     width: 100%;
+    /* height: 100vh; */
     /* margin: 4px 0 0 0; */
     padding: 0;
 }
@@ -120,7 +121,8 @@ footer {
     position: relative;
     cursor: pointer;
     min-width: 150px;
-    min-height: 250px;
+    max-width: 170px;
+    height: 250px;
 }
 .movie-container--loading {
     background: var(--purple-light-2);
@@ -165,11 +167,17 @@ footer {
 }
 .movie-img {
     border-radius: 8px;
-    min-height: 250px;
+    height: 250px;
 }
+
+.movie-img--animation {
+    transform-origin: top;
+    animation: fadeInSweep 1s ease-in-out;
+}
+
 .cast-img {
     border-radius: 8px;
-    min-height: 250px;
+    height: 225px;
 }
 
 .categoriesPreview-list,
@@ -281,6 +289,8 @@ footer {
     height: 241px;
     padding-left: 24px;
     padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--main-color) var(--background-color);
 }
 
 .trendingPreview-movieList .movie-container,
@@ -302,6 +312,19 @@ footer {
 /* Categories */
 .category-container {
     width: 45%;
+    animation: fadeInSweepRight 0.5s ease-in-out;
+}
+
+@media (min-width: 900px) {
+    .categoriesPreview-list {
+        justify-content: space-evenly;
+    }
+    .category-container {
+        width: 200px;
+    }
+    .movieDetail-container {
+        overflow: hidden;
+    }
 }
 
 .category-title {
@@ -385,19 +408,26 @@ footer {
 .genericList-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     padding: 32px 24px;
+    gap: 10px;
 }
 
 .genericList-container .movie-container {
     display: inline-block;
     width: 47.5%;
+    /* margin-bottom: 10px; */
 }
-
+@media (min-width: 600px) {
+    .genericList-container .movie-container {
+        width: 300px;
+        height: 310px;
+    }
+}
 .genericList-container .movie-img {
     width: 100%;
-    min-height: 250px;
+    /* min-height: 250px; */
 }
 
 /* Movie Detail */
@@ -410,6 +440,7 @@ footer {
     position: absolute;
     background-color: var(--background-color);
     height: auto;
+    width: 100%;
 }
 
 .movieDetail-title {
@@ -453,6 +484,8 @@ footer {
     width: calc(100vw - 24px);
     padding-bottom: 16px;
     max-height: 225px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--main-color) var(--background-color);
 }
 .castMovies-scrollContainer .movie-container {
     display: inline-block;
@@ -501,6 +534,8 @@ footer {
     width: calc(100vw - 24px);
     padding-bottom: 16px;
     max-height: 225px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--main-color) var(--background-color);
 }
 
 .relatedMovies-scrollContainer .movie-container {
@@ -550,5 +585,28 @@ footer {
     }
     50% {
         opacity: 0%;
+    }
+}
+
+@keyframes fadeInSweep {
+    0% {
+        opacity: 0%;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(1);
+    }
+}
+@keyframes fadeInSweepRight {
+    0% {
+        transform-origin: center;
+        opacity: 0%;
+        transform: scale(0);
+    }
+    100% {
+        transform-origin: center;
+        opacity: 100%;
+        transform: scale(1);
     }
 }

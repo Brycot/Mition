@@ -46,6 +46,7 @@ const lazyLoader = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const url = entry.target.getAttribute("data-img");
             entry.target.setAttribute("src", url);
+            entry.target.classList.add("movie-img--animation");
         }
     });
 });
@@ -243,7 +244,6 @@ function getPaginatedMoviesBySearch(query) {
             document.documentElement;
         const scrollIsBotton = scrollTop + clientHeight >= scrollHeight - 15;
         const pageIsMax = page <= maxPage;
-
         if (scrollIsBotton && pageIsMax) {
             page++;
             const { data } = await api(API_SEARCH_MOVIES, {
@@ -292,13 +292,13 @@ async function getPaginatedTrendingMovies() {
 
 async function getMovieById(id) {
     const { data: movie } = await api(`/movie/${id}`);
-    const movieUrlIMG = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    const movieUrlIMGMobile = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
     headerSection.style.background = `
-    linear-gradient(
-        180deg, 
-        rgba(0, 0, 0, 0.35) 19.27%, 
-        rgba(0, 0, 0, 0) 29.17%),
-        url(${movieUrlIMG})`;
+        linear-gradient(
+            180deg, 
+            rgba(0, 0, 0, 0.35) 19.27%, 
+            rgba(0, 0, 0, 0) 29.17%),
+            url(${movieUrlIMGMobile})`;
 
     movieDetailTitle.textContent = movie.title;
     movieDetailDescription.textContent = movie.overview;
@@ -308,15 +308,12 @@ async function getMovieById(id) {
     getRelatedMoviesId(id);
     getCastMovieId(id);
     getTrailerMovieId(id);
+    getImageMovieId(id);
 }
 
 async function getRelatedMoviesId(id) {
     const { data } = await api(`/movie/${id}/recommendations`);
     const relatedMovies = data.results;
-    if(relatedMovies.length < 1) {
-        
-    }
-    console.log(relatedMovies);
     createMovies(relatedMovies, relatedMoviesContainer, {
         lazyLoad: true,
         clean: true,
@@ -337,6 +334,21 @@ async function getTrailerMovieId(id) {
     //     lazyLoad: true,
     //     clean: true,
     // });
+}
+async function getImageMovieId(id) {
+    const { data } = await api(`/movie/${id}/images`);
+    const movieImages = data.backdrops;
+    const { clientWidth } = document.documentElement;
+    const MIN_DESKTOP_WIDTH = 900;
+    const movieUrlIMGDesktop = `https://image.tmdb.org/t/p/original${movieImages[0].file_path}`;
+    if (clientWidth >= MIN_DESKTOP_WIDTH) {
+        headerSection.style.background = `
+        linear-gradient(
+            180deg, 
+            rgba(0, 0, 0, 0.35) 19.27%, 
+            rgba(0, 0, 0, 0) 29.17%),
+            url(${movieUrlIMGDesktop})`;
+    }
 }
 
 async function getLikedMovies() {
