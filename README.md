@@ -13,8 +13,8 @@ Asi como el uso de tecnologias como lazyLoad.
 
 ---
 
-![](https://i.imgur.com/kbvfRls.png)
+![](https://i.imgur.com/gy3ZZfS.png)
 
 ---
 
-## [Visitar el demo del proyecyo](https://trusting-bose-317de8.netlify.app/) 
+## [Visitar el demo del proyecyo](https://brycot.github.io/Mition/) 
